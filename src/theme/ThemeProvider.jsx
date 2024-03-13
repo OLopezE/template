@@ -4,9 +4,7 @@ import Switch from "../components/switch/Switch";
 import { SwitchContainer } from "./Theme.style";
 import { ThemeProvider } from "styled-components";
 
-const ThemeContext = createContext(null);
-
-const ThemeProvider = ({ children }) => {
+const MyThemeProvider = ({ children }) => {
   const [themeColor, setThemeColor] = useState('light');
   const myPalette = palette[themeColor];
 
@@ -18,7 +16,7 @@ const ThemeProvider = ({ children }) => {
   }, [themeColor]);
 
   return (
-    <ThemeProvider theme={{themeColor, myPalette}}>
+    <ThemeProvider theme={{palette: myPalette}}>
       <SwitchContainer>
         <Switch label="Dark mode" handleClick={() => handleTheme(themeColor)} />
       </SwitchContainer>
@@ -27,4 +25,4 @@ const ThemeProvider = ({ children }) => {
   )
 }
 
-export { ThemeProvider, ThemeContext };
+export { MyThemeProvider };
